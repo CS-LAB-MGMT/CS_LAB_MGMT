@@ -56,19 +56,29 @@ When working on your feature branch or hotfix, things may change upstream on the
 ### An example workflow by git commands
 Clone once:  
 `git clone git@github.com:CS-LAB-MGMT/CS_LAB_MGMT.git`  
+Switch to development branch and make a feature branch  
 `git checkout development`  
 `git checkout -b feature123`  
-Make some changes.
+Make some changes.  
 `git add .`  
 `git commit -m "I changed something."`  
-Make some more changes.
+Make some more changes.  
 `git add .`  
 `git commit -m "Did more stuff"`  
 Decide to try a cool library out.  
 `git checkout -b "feature123_libtest"`  
 Try out library, go crazy, its horrible! Maybe later.  
 `git checkout feature123`  
-Finish the feature, and learn more about that cool library. Maybe you can make it work?  
+Finish the feature
 `git add .`  
 `git commit -m "Finished feature"`  
+Development branch is way ahead of my current branch, I hope they didn't break anything I needed! Lets update my local development branch and see.  
+`git checkout development`  
+`git pull`  
+Now to merge it into my feature branch.
+`git checkout feature123`  
+`git merge development`  
+Luckily, the other developers didn't make any changes to the files you worked with. So the merge was successful!  
+Ah, you took a break, at lunch, read more about that cool library and realized you can make it work!  
+
 
