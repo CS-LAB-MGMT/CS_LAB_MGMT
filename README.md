@@ -80,5 +80,7 @@ Now to merge it into my feature branch.
 `git merge development`  
 Luckily, the other developers didn't make any changes to the files you worked with. So the merge was successful!  
 Ah, you took a break, at lunch, read more about that cool library and realized you can make it work!  
+`git checkout feature123_libtest`  
+
 
 
