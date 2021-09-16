@@ -12,7 +12,7 @@ You will want to setup an SSH key for your github account for each of your compu
 This is only needed for new repositories that you want to connect to a remote server. This was already done. Cloning this project will already have the remote repo set.
 - **checking your git configuration:**  
 `git config --list`  
-See what is your current username and user email and if you have origin set among other things.
+See what is your current username and user email and if you have origin set among other things. Read the set-up-git link for how to set these if you don't already have them set.
 - **checking out an existing branch:**  
 `git checkout <branch>`  
 `git checkout main` will switch you to `main` branch  
@@ -52,4 +52,23 @@ This will take all the new and modified files added with `git add` and commit th
 `git merge development`  
 When working on your feature branch or hotfix, things may change upstream on the development branch as other people complete features, submit pull requests, and have them merged to development. When working on a branch, you might want to try something crazy or that is likely to screw up all the hard work you did for branch feature123, so you make a branch off feature123 called feature123_try_quantum_computing. On this branch you test out some idea you had, and if it doesn't work, you can switch back to feature123 and delete the feature123_try_quantum_computing branch. But what if it does work? Then make sure your changes are committed to that branch, checkout feature123, and use the `git merge feature123_try_quantum_computing` command to start the process of merging it back into the feature123 branch. This will compare the two and attempt to merge them automatically, if there are changes to both branches, however, you will need to manually review and decide what to keep from each branch. We will be trying to avoid merging any branch with development without doing a pull request, first, and will generally do the merging within GitHub itself rather than from the command line.
 
+
+### An example workflow by git commands
+Clone once:  
+`git clone git@github.com:CS-LAB-MGMT/CS_LAB_MGMT.git`  
+`git checkout development`  
+`git checkout -b feature123`  
+Make some changes.
+`git add .`  
+`git commit -m "I changed something."`  
+Make some more changes.
+`git add .`  
+`git commit -m "Did more stuff"`  
+Decide to try a cool library out.  
+`git checkout -b "feature123_libtest"`  
+Try out library, go crazy, its horrible! Maybe later.  
+`git checkout feature123`  
+Finish the feature, and learn more about that cool library. Maybe you can make it work?  
+`git add .`  
+`git commit -m "Finished feature"`  
 
