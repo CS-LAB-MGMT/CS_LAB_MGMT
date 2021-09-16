@@ -31,8 +31,12 @@ Creates a new branch named feature123 and checks it out. You can also use `git b
 This will make your local branch and its commits available on the remote repository. This step is where we will start using the GitHub web interface to create pull requests, review, and finally merge changes into the development branch, and eventually the main branch.
 - **pulling latest changes of a branch:**  
 `git checkout development`  
+`git pull origin development`  
+*or*  
+`git checkout development`  
 `git pull`  
-This is how you will use this command most often. First you checkout the branch you want to update to the latest remote version. Then you use the `git pull` command which will 
+If the upstream is already set. Which you will know because `git pull` won't work. You can also see if it is set with the `git config --list` command.  
+This is how you will use this command most often. First you checkout the branch you want to update to the latest remote version. Then you use the `git pull` command to get the latest changes. In 99.9% of cases for this project you will only be pulling updates to the development branch on your local machine. This command will be used to apply the most recent changes to your feature branch using the `merge` command. But be careful to checkout your feature branch and use `git merge development` to bring changes to development INTO your feature branch, and not the other way around. See **merging branches** for more information.
 - **adding new or modified files to the repository:**  
 `git add file.txt`  
 *or*  
@@ -40,12 +44,12 @@ This is how you will use this command most often. First you checkout the branch 
 *or*  
 `git add .`  
 This will add a single file or a list of files to a commit for a branch. This is will occur locally. We will have a .gitignore file where we will specify all the files, file types, and directories that should not be in the repository. This makes it possible to use the more convenient `git add .` command that will add any new or modified files in the directory/sub-directories within your local repo to the commit, except those that meet the specifications within the .gitignore file(s) throughout the project.
-- **commiting changes to your local branch:**  
+- **committing changes to your local branch:**  
 `git commit -m "this is the message that tells people what this change IS."`  
 This will take all the new and modified files added with `git add` and commit them to the branch.
 - **merging branches:**  
+`git checkout feature123`  
 `git merge development`  
-When working on your feature branch or hotfix, things may change upstream on the development branch as other people complete features, submit pull requests, and have them merged to development. You may want to 
-When working on a branch, you might want to try something crazy or that is likely to screw up all the hard work you did for branch feature123, so you make a branch off feature123 called feature123_try_quantum_computing. On this branch you test out some idea you had, and if it doesn't work, you can switch back to feature123 and delete the feature123_try_quantum_computing branch. But what if it does work? Then make sure your changes are committed to that branch, checkout feature123, and use the `git merge feature123_try_quantum_computing` command to start the process of merging it back into the feature123 branch. This will compare the two and attempt to merge them automatically, if there are changes to both branches, however, you will need to manually review and decide what to keep from each branch. We will be trying to avoid merging any branch with development without doing a pull request, first, and will generally do the merging within GitHub itself rather than from the command line.
+When working on your feature branch or hotfix, things may change upstream on the development branch as other people complete features, submit pull requests, and have them merged to development. When working on a branch, you might want to try something crazy or that is likely to screw up all the hard work you did for branch feature123, so you make a branch off feature123 called feature123_try_quantum_computing. On this branch you test out some idea you had, and if it doesn't work, you can switch back to feature123 and delete the feature123_try_quantum_computing branch. But what if it does work? Then make sure your changes are committed to that branch, checkout feature123, and use the `git merge feature123_try_quantum_computing` command to start the process of merging it back into the feature123 branch. This will compare the two and attempt to merge them automatically, if there are changes to both branches, however, you will need to manually review and decide what to keep from each branch. We will be trying to avoid merging any branch with development without doing a pull request, first, and will generally do the merging within GitHub itself rather than from the command line.
 
 
