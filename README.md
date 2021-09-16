@@ -3,7 +3,7 @@ This is the description of the project. Maybe getting it to be more than one lin
 ## Source for git information
 The resource used for the following information on using git was found at https://guides.github.com/introduction/git-handbook/, so please visit that guide if you want a better understanding of using git.
 ## General git setup
-You will want to setup an SSH key for your github account for each of your computers that you use. This makes it easier to authenticate yourself with the remote repository. Be sure to set your global/local username and email to whatever you want to be used on the project. There are two ways to to this, `git config --global` and `git config --local`, local being for the local repository in which you are working. Here is a resource to help with setting up git with github. https://docs.github.com/en/get-started/quickstart/set-up-git
+You will want to setup an SSH key for your github account for each of your computers that you use. This makes it easier to authenticate yourself with the remote repository. On your computer, be sure to set your global/local username and email to whatever you want to be used on the project. There are two ways to do this, `git config --global` and `git config --local`, local being for the local repository in which you are working, global is for your entire system. Here is a resource to help with setting up git with github. https://docs.github.com/en/get-started/quickstart/set-up-git
 ## git commands
 - **cloning the project:**  
 `git clone git@github.com:CS-LAB-MGMT/CS_LAB_MGMT.git`
@@ -25,7 +25,7 @@ Any development work you do must be on a feature branch that you created after c
 For that you will need the next command..
 - **creating a new branch:**  
 `git checkout -b feature123`  
-Creates a new branch named feature123 and checks it out. You can also use `git branch feature123` but this will leave you in the parent branch you were in, which should always be `development` and ideally we don't make our changes to that branch except with through a pull request and merge. More on that later.
+Creates a new branch named feature123 and checks it out. You can also use `git branch feature123` but this will leave you in the parent branch you were in, which should always be `development` and ideally we don't make our changes to that branch except through a pull request and merge. More on that later.
 - **pushing a local branch to the remote repository:**  
 `git push origin feature123`  
 This will make your local branch and its commits available on the remote repository. This step is where we will start using the GitHub web interface to create pull requests, review, and finally merge changes into the development branch, and eventually the main branch.
@@ -43,7 +43,10 @@ This is how you will use this command most often. First you checkout the branch 
 `git add file1.txt file2.txt`  
 *or*  
 `git add .`  
-This will add a single file or a list of files to a commit for a branch. This is will occur locally. We will have a .gitignore file where we will specify all the files, file types, and directories that should not be in the repository. This makes it possible to use the more convenient `git add .` command that will add any new or modified files in the directory/sub-directories within your local repo to the commit, except those that meet the specifications within the .gitignore file(s) throughout the project.
+This will add a single file or a list of files to a commit for a branch. This is will occur locally. We will have a .gitignore file where we will specify all the files, file types, and directories that should not be in the repository. This makes it possible to use the more convenient `git add .` command that will add any new or modified files in the directory/sub-directories within your local repo to the commit, except those that meet the specifications within the .gitignore file(s) throughout the project.  
+- **checking status of tracked files:**  
+`git status`  
+This will show you all tracked, untracked, modified, staged, unstaged files. If its unstaged, it means it won't be in the next commit you do. There is more to this, but you can read about that with a quick search.  
 - **committing changes to your local branch:**  
 `git commit -m "this is the message that tells people what this change IS."`  
 This will take all the new and modified files added with `git add` and commit them to the branch.
