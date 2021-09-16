@@ -3,7 +3,7 @@ This is the description of the project. Maybe getting it to be more than one lin
 ## Source for git information
 The resource used for the following information on using git was found at https://guides.github.com/introduction/git-handbook/, so please visit that guide if you want a better understanding of using git.
 ## General git setup
-You will want to setup an SSH key for your github account for each of your computers that you use. This makes it easier to authenticate yourself with the remote repository. Be sure to set your global/local username and email to whatever you want to be used on the project. There are two ways to to this, `git config --global` and `git config --local`, local being for the local repository in which you are working. Here is a resource to help with setting up git with github. https://docs.github.com/en/get-started/quickstart/set-up-git
+You will want to setup an SSH key for your github account for each of your computers that you use. This makes it easier to authenticate yourself with the remote repository. On your computer, be sure to set your global/local username and email to whatever you want to be used on the project. There are two ways to do this, `git config --global` and `git config --local`, local being for the local repository in which you are working, global is for your entire system. Here is a resource to help with setting up git with github. https://docs.github.com/en/get-started/quickstart/set-up-git
 ## git commands
 - **cloning the project:**  
 `git clone git@github.com:CS-LAB-MGMT/CS_LAB_MGMT.git`
