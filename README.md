@@ -59,7 +59,7 @@ When working on your feature branch or hotfix, things may change upstream on the
 ### An example workflow by git commands
 Clone once:  
 `git clone git@github.com:CS-LAB-MGMT/CS_LAB_MGMT.git`  
-Switch to development branch and make a feature branch  
+`cd CS_LAB_MGMT` and switch to development branch and make a feature branch  
 `git checkout development`  
 `git checkout -b feature123`  
 Make some changes.  
