@@ -98,6 +98,6 @@ I forgot, the library completely replaces the work I did on feature123 branch...
 `git pull`  
 `git checkout feature123_libtest`  
 `git merge development`  
-No conflicts, hurray! Now, I just need to push it to remote and submit the pull request. I think I will give it a better name on the remote because libtest is not needed.  
+No conflicts, hurray! Now, I just need to push it to remote and submit the pull request. I think I will overwrite feature123 on the remote because the libtest branch effectively replaces it.  
 `git push origin feature123_libtest:feature123`  
 Ready for merge and pull request.
