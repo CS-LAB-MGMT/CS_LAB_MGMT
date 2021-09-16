@@ -25,7 +25,7 @@ Any development work you do must be on a feature branch that you created after c
 For that you will need the next command..
 - **creating a new branch:**  
 `git checkout -b feature123`  
-Creates a new branch named feature123 and checks it out. You can also use `git branch feature123` but this will leave you in the parent branch you were in, which should always be `development` and ideally we don't make our changes to that branch except with through a pull request and merge. More on that later.
+Creates a new branch named feature123 and checks it out. You can also use `git branch feature123` but this will leave you in the parent branch you were in, which should always be `development` and ideally we don't make our changes to that branch except through a pull request and merge. More on that later.
 - **pushing a local branch to the remote repository:**  
 `git push origin feature123`  
 This will make your local branch and its commits available on the remote repository. This step is where we will start using the GitHub web interface to create pull requests, review, and finally merge changes into the development branch, and eventually the main branch.
@@ -43,7 +43,10 @@ This is how you will use this command most often. First you checkout the branch 
 `git add file1.txt file2.txt`  
 *or*  
 `git add .`  
-This will add a single file or a list of files to a commit for a branch. This is will occur locally. We will have a .gitignore file where we will specify all the files, file types, and directories that should not be in the repository. This makes it possible to use the more convenient `git add .` command that will add any new or modified files in the directory/sub-directories within your local repo to the commit, except those that meet the specifications within the .gitignore file(s) throughout the project.
+This will add a single file or a list of files to a commit for a branch. This is will occur locally. We will have a .gitignore file where we will specify all the files, file types, and directories that should not be in the repository. This makes it possible to use the more convenient `git add .` command that will add any new or modified files in the directory/sub-directories within your local repo to the commit, except those that meet the specifications within the .gitignore file(s) throughout the project.  
+- **checking status of tracked files:**  
+`git status`  
+This will show you all tracked, untracked, modified, staged, unstaged files. If its unstaged, it means it won't be in the next commit you do. There is more to this, but you can read about that with a quick search.  
 - **committing changes to your local branch:**  
 `git commit -m "this is the message that tells people what this change IS."`  
 This will take all the new and modified files added with `git add` and commit them to the branch.
