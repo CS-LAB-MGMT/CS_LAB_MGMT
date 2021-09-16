@@ -72,15 +72,29 @@ Try out library, go crazy, its horrible! Maybe later.
 Finish the feature
 `git add .`  
 `git commit -m "Finished feature"`  
-Development branch is way ahead of my current branch, I hope they didn't break anything I needed! Lets update my local development branch and see.  
+Just in case my computer catches on fire...  
+`git push origin feature123`  
+The development branch is probably way ahead of my current branch, I hope they didn't break anything I needed! Lets update my local development branch and see.  
 `git checkout development`  
 `git pull`  
 Now to merge it into my feature branch.
 `git checkout feature123`  
 `git merge development`  
-Luckily, the other developers didn't make any changes to the files you worked with. So the merge was successful!  
-Ah, you took a break, at lunch, read more about that cool library and realized you can make it work!  
+Luckily, the other developers didn't make any conflicting changes to the files you worked with. So the merge was successful!  
+Ah, you took a break for lunch, read more about that cool library, and realized you can make it work!  
 `git checkout feature123_libtest`  
-
-
-
+Made the library work! Now to merge back to my feature123 branch  
+`git add .`  
+`git commit -m "Library included!"`  
+`git checkout feature123`  
+`git merge feature123_libtest`  
+Oh no! You have conflicts with the merge! This is a great time to be using an IDE (like VS Code) that has some great built-in git features. Otherwise I *could* use `git merge --abort` to stop the merge process, then use `git push origin feature123` and `git push origin feature123_libtest` then use GitHub to handle the merge conflicts. But that's too much hassle, I'd rather handle it locally, so I'll use my less-awesome IDE to check each of my files for the conflicts, and fix it without the aid of a program, ouch.  
+... several hours later ...  
+I forgot, the library completely replaces the work I did on feature123 branch...So, I really just need to merge the latest development branch into my feature123_libtest and push it to remote and submit a pull request for merging it into development.  
+`git checkout development`  
+`git pull`  
+`git checkout feature123_libtest`  
+`git merge development`  
+No conflicts, hurray! Now, I just need to push it to remote and submit the pull request. I think I will give it a better name on the remote because libtest is not needed.  
+`git push origin feature123_libtest:feature123`  
+Ready for merge and pull request.
