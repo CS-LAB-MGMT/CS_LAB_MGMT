@@ -101,3 +101,28 @@ I forgot, the library completely replaces the work I did on feature123 branch...
 No conflicts, hurray! Now, I just need to push it to remote and submit the pull request. I think I will give it a better name on the remote because libtest is not needed.  
 `git push origin feature123_libtest:feature123`  
 Ready for merge and pull request.
+
+### authentication
+
+#### requirements
+* Python 3.5, 3.6, 3.7, 3.8 or 3.9
+* Django (2.0+)
+* python-openid or python3-openid (depending on your Python version)
+* requests and requests-oauthlib
+
+[title](https://django-allauth.readthedocs.io/en/latest/index.html)
+
+install allauth
+`pip install django-allauth`
+
+post install
+cd to top level django project dir
+create database tables
+`python manage.py migrate`
+
+create a super user
+`python manage.py createsuperuser`
+
+run dev server
+`python manage.py runserver`
+
