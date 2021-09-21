@@ -110,7 +110,7 @@ Ready for merge and pull request.
 * python-openid or python3-openid (depending on your Python version)
 * requests and requests-oauthlib
 
-[title](https://django-allauth.readthedocs.io/en/latest/index.html)
+[allauth documentation](https://django-allauth.readthedocs.io/en/latest/index.html)
 
 install allauth
 `pip install django-allauth`
