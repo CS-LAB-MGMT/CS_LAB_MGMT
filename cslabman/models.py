@@ -10,7 +10,7 @@ class Students(models.Model):
 
 class Scripts(models.Model):
     script_id = models.AutoField(primary_key=True)
-    system_id = models.ForeignKey('Systems', on_delete=models.SET_NULL,null=True) # May be okay to CASCADE, we'll see what Bryan wants and how it behaves.
+    system_id = models.ForeignKey('Systems', on_delete=models.CASCADE) # May be okay to CASCADE, we'll see what Bryan wants and how it behaves.
     class ScriptType(models.IntegerChoices):
         ADDUSER = 1
         DELETEUSER = 2
