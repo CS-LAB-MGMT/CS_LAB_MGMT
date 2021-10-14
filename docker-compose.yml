@@ -6,7 +6,7 @@ services:
       - .:/app
     ports:
       - ${HOST_PORT}:${HOST_PORT}
-    image: app:${IMAGENAME}
+    image: ${APPNAME}:${IMAGENAME}
     container_name: ${CONTAINERNAMEDJ}
     command: python manage.py runserver 0.0.0.0:${HOST_PORT}
     depends_on:
