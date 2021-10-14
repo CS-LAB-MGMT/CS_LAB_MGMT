@@ -1,0 +1,26 @@
+
+<!-- this inherits some base html from base.html, and then adds on unique html for this view -->
+{% extends "cslabman/base.html" %}
+
+ {% block content %}
+
+<div class = "content-section">
+        <form method ="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class ="border-bottom mb-4"> Request Management</legend>
+
+                {{ form }}
+
+
+            </fieldset>
+            <div class = "form-group">
+                <button class="btn btn-outline-info" type="submit"> submit </button>
+            </div>
+        </form>
+    </div>
+
+
+
+
+{% endblock content %}

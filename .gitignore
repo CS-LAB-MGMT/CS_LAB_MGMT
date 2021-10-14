@@ -1,6 +1,6 @@
 # Specific to our project/development
-data/
-
+data*/
+.env
 # From https://djangowaves.com/tips-tricks/gitignore-for-a-django-project/
 # Django #
 *.log
