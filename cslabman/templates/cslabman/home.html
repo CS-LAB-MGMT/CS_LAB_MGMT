@@ -1,0 +1,19 @@
+<!-- this inherits some base html from base.html, and then adds on unique html for this view -->
+{% extends "cslabman/base.html" %}
+{% block content %}
+    <h1> MTCS Lab Resource Management   </h1>
+     <p style=" font-size:20px"> Here you can request access to MTSU Computer Science Department Resources! <br>
+        You must be a valid (enrolled/confirmed registered) MTSU student to qualify for access. <br> <br> <br>
+         This website may be used for: <br>
+         <ul style="font-size:18px" >
+            <li> Requesting a personal Computer Science Department account </li>
+            <li> Viewing your account details </li>
+            <li> Running repair utilities </li>
+            <li> Renewing your account for next semester (if applicable) </li>
+            <li> requesting access to the cluster / rangers / System64 </li>
+        </ul>
+    </p>
+    <br>
+    <h1>  To get started, please <a href="/login/">login! </a> </h1>
+
+{% endblock content %}
