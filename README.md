@@ -126,3 +126,9 @@ create a super user
 run dev server
 `python manage.py runserver`
 
+navigate to http://127.0.0.1:8000/accounts/signup to signup
+make sure you use either an @mtmail.mtsu.edu or @mtsu.edu email to signup
+otherwise your account will become inactive
+
+the email is printed to stdout
+user can login once email link has been confirmed
