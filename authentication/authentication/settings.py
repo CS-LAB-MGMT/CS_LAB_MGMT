@@ -31,11 +31,6 @@ INSTALLED_APPS = [
     'core',
 ]
 
-# Allauth configurations
-SITE_ID = 1
-ACCOUNT_EMAIL_VERIFICATION = True
-ACCOUNT_EMAIL_REQUIRED = True
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -134,6 +129,12 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-
-# Custom setting. To email
 RECIPIENT_ADDRESS = env('RECIPIENT_ADDRESS')
+
+# Allauth configurations
+SITE_ID = 1
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_EMAIL_VERIFICATION="mandatory"
+ACCOUNT_AUTHENTICATION_METHOD="email"
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS=False
+ACCOUNT_USERNAME_REQUIRED=False
