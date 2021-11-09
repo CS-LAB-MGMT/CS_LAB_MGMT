@@ -1,19 +1,32 @@
 from django.db import models
 # Django models for the entire system. Should likely be moved elsewhere. For now, it is important to note that CASCADE on_delete will
 # likely not be a permanent choice here. This is temporary and should not be hard to fix.
-class Systems(models.Model):
-    #system_id = models.AutoField(primary_key=True)
-    system_name = models.CharField(max_length=30, primary_key=True)
 
+#Represents Systems table in database
+class Systems(models.Model):
+    system_name = models.CharField(max_length=30, primary_key=True)
+    group_name = models.CharField(max_length=30)
+
+    def __str__(self):
+       return '%s'  % (self.pk)
+
+    #Affects how systems is displayed on admin page
     class Meta:
         verbose_name_plural = "Systems"
 
-class Students(models.Model):
-    mnumber = models.CharField(max_length=8, primary_key=True)
 
+#Represents Students table in database
+class Students(models.Model):
+    pipeline_id = models.CharField(max_length=6 ,primary_key=True)
+
+    def __str__(self):
+       return '%s'  % (self.pk)
+
+    # Affects how students is displayed on admin page
     class Meta:
         verbose_name_plural = "Students"
 
+#Represents scripts table in database
 class Scripts(models.Model):
     script_id = models.AutoField(primary_key=True)
     system_name = models.ForeignKey('Systems', on_delete=models.CASCADE) # May be okay to CASCADE, we'll see what Bryan wants and how it behaves.
@@ -25,12 +38,16 @@ class Scripts(models.Model):
     script_type = models.IntegerField(choices=ScriptType.choices)
     script_string = models.TextField()
 
+    def __str__(self):
+        return '%s %s %s' % (self.system_name, self.script_type, self.script_string)
+
+    # Affects how scripts is displayed on admin page
     class Meta:
         verbose_name_plural = "Scripts"
-
+#Represents AccountRequests table in database
 class AccountRequests(models.Model):
     request_id = models.AutoField(primary_key=True)
-    mnumber = models.ForeignKey('Students', on_delete=models.CASCADE)
+    pipeline_id = models.ForeignKey('Students', on_delete=models.CASCADE)
     system_name = models.ForeignKey('Systems', on_delete=models.CASCADE)
     reason = models.CharField(max_length=150, default='')
     # One way of doing the request type.
@@ -47,11 +64,19 @@ class AccountRequests(models.Model):
         HOLD = 2
         NOSCRIPT = 3
         COMPLETE = 4
-    request_status = models.IntegerField(choices=RequestStatus.choices)
+    request_status = models.IntegerField(choices=RequestStatus.choices, default=1)
     class YesNo(models.IntegerChoices):
         NO = 0
         YES = 1
-    request_complete = models.IntegerField(choices=YesNo.choices)
+    request_complete = models.IntegerField(choices=YesNo.choices, default=0)
+
+    def __str__(self):
+        return '%s %s %s %s'  % (self.system_name, self.reason, self.request_type, self.request_status)
 
     class Meta:
         verbose_name_plural = "Account Requests"
+
+
+#Send a message to general
+
+
