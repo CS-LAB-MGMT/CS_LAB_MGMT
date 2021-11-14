@@ -14,7 +14,7 @@ from cslabman.models import Systems, Students
 
 #View when users try to register for website
 
-def register(request):
+def registration(request):
 
     if request.method == 'POST':
 

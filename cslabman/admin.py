@@ -28,6 +28,7 @@ def generate_script(modeladmin,request,queryset):
     # script = scripts.
     print(acc_req.reason)
 
+
 class RequestTypeListFilter(admin.SimpleListFilter):
   title = "request type"
   parameter_name = "request_type"
