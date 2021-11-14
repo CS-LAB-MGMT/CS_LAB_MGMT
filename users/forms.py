@@ -4,6 +4,7 @@ from django.forms import ModelForm
 from django import forms
 from cslabman.models import AccountRequests
 from cslabman.models import Systems
+from cslabman.models import RequestType
 from django.db import models
 
 
@@ -20,18 +21,22 @@ class requestForm(ModelForm):
 
     SYSTEMCHOICES = [
                      ('Ranger', 'Ranger'),
-                     ('Sysetm64', 'System64'),
+                     ('System64', 'System64'),
                      ('Cluster', 'Cluster'),
                      ('PersonalAccount', 'Personal CS Account')]
 
     #specify the order in which rom fields show up on webpage
-    field_order = ['system_name', 'request_id', 'reason']
+    field_order = ['system_name', 'request_type', 'reason']
 
     #declare form fields with some styling and labels
-    system_name = forms.ChoiceField(choices=SYSTEMCHOICES, widget=forms.Select,
-                                    label='What system is this request for?', required=True, )
+    systems = Systems.objects.all()
 
-    request_id = forms.ChoiceField(choices=REQUESTCHOICES, widget=forms.RadioSelect, label='What is this request for?',
+    system_name = forms.ModelChoiceField(queryset=systems, widget=forms.Select,
+                                    label='What system is this request for?', required=True, )
+    
+    requesttypes = RequestType.objects.all().order_by('request_type')
+    
+    request_type = forms.ModelChoiceField(queryset=requesttypes, widget=forms.RadioSelect, label='What is this request for?',
                                    required=True)
 
     reason = forms.CharField(required=False, label='Reason for Request:',
@@ -42,8 +47,8 @@ class requestForm(ModelForm):
     #Declare what model form is based on
     class Meta:
         model = AccountRequests
-        fields = ['request_id', 'system_name',  'reason',]
-        exclude = ['mnumber']
+        fields = ['request_type', 'system_name',  'reason']
+        
 
 class systemForm(ModelForm):
     SYSTEMCHOICES = [

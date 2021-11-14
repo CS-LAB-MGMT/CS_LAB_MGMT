@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import environ
 import os
-
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cslabman',
     'users',
+    'csldap',
+    'scriptgen',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +142,8 @@ LOGIN_URL = 'login'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# This makes the backgrounds of django.contrib.messages.error the color of danger.
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
