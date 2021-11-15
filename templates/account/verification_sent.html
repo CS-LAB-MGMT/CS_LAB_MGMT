@@ -1,0 +1,17 @@
+
+{% extends "cslabman/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Verify Your E-mail Address" %}</h1>
+
+    <p>{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. {% endblocktrans %}</p>
+    <ul>
+      <li> If you did not get the email, please double check you have provided the right information! </li>
+        <li> To resend the email, please click <a href="{% url 'account_signup' %}">here</a> and resupply your information </li>
+      <li> If you continue to encounter issues, please go to the <a href="{% url 'Request-Help' %}">Help Page</a></li>
+    </ul>
+{% endblock %}

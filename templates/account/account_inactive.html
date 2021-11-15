@@ -1,0 +1,22 @@
+{% extends "cslabman/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Account Inactive" %}{% endblock %}
+
+{% block content %}
+<div class = "content-section">
+  <fieldset class="form-group">
+<h1>{% trans "Restricted Email" %}</h1>
+
+<p>{% trans "The email address you supplied is not allowed, or there is a typo!" %}</p>
+    <p> The address must be a valid MTSU email address!</p>
+<ul>
+  <li> Please double check you have supplied the right information! </li>
+  <li> If you continue to encounter issues, please go to the <a href="{% url 'Request-Help' %}">Help Page</a></li>
+</ul>
+    <small> Click <a href="{% url 'account_signup' %}">here </a> to return to the register page</small>
+
+{% endblock %}
+  </fieldset>
+</div>

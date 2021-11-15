@@ -1,0 +1,65 @@
+
+<!-- this inherits some base html from base.html, and then adds on unique html for this view -->
+<!-- Displays the requests the user has in a table format -->
+{% extends "cslabman/base.html" %}
+
+ {% block content %}
+
+<div class = "content-section">
+
+        <table class = "table table-bordered">
+            <thead>
+            <tr>
+                <th> System Name </th>
+                <th> Reason for Request </th>
+                <th> Request Type </th>
+                <th> Request Status </th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for curVal in students %}
+
+                    <tr>
+                        <td> {{ curVal.system_name}} </td>
+                        <td> {{ curVal.reason }} </td>
+
+                        {% if  curVal.request_type == 1 %}
+                            <td> Request New Account </td>
+                        {% endif %}
+                        {% if curVal.request_type  == 2 %}
+                            <td> Delete Account </td>
+                        {% endif %}
+                        {% if curVal.request_type  == 3 %}
+                            <td> Request Permissions </td>
+                        {% endif %}
+                        {% if curVal.request_type == 4 %}
+                            <td> Reset Password </td>
+                        {% endif %}
+
+
+                        {% if curVal.request_status == 1 %}
+                            <td> Incomplete </td>
+                        {% endif %}
+
+                        {% if curVal.request_status == 2 %}
+                            <td> Hold </td>
+                        {% endif %}
+
+                        {% if curVal.request_status == 3 %}
+                            <td> No Script </td>
+                        {% endif %}
+
+                        {% if curVal.request_status == 4 %}
+                            <td> Complete </td>
+                        {% endif %}
+                    </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+
+    <p class="small"> If you don't see any results in the table, there are no stored records of your requests.</p>
+
+    </div>
+
+{% endblock content %}
