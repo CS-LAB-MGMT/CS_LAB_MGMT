@@ -40,13 +40,9 @@ class RequestType(models.Model):
 #Represents scripts table in database
 class Scripts(models.Model):
     script_id = models.AutoField(primary_key=True)
-    system_name = models.ForeignKey(Systems,on_delete=models.CASCADE) # May be okay to CASCADE, we'll see what Bryan wants and how it behaves.
-    class ScriptType(models.IntegerChoices):
-        ADDUSER = 1
-        DELETEUSER = 2
-        MODIFYUSER = 3
-        RESETPASSWORD = 4
-    script_type = models.IntegerField(choices=ScriptType.choices)
+    system_name = models.ForeignKey('Systems',on_delete=models.CASCADE) # May be okay to CASCADE, we'll see what Bryan wants and how it behaves.
+    
+    script_type = models.ForeignKey('RequestType',on_delete=models.CASCADE)
     script_string = models.TextField()
 
 

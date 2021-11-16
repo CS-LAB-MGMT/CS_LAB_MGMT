@@ -45,21 +45,22 @@ def mtcsRequests(request):
         query_group = Systems.objects.get(system_name=system_name)
         group_name = query_group.group_name
         renew_access = form['request_type'].value() == "Renew Access"
-        print(username)
-        print(system_name)
-        print(group_name)
-        print(form['request_type'].value())
+        update_user = form['request_type'].value() == "Change Access"
         # CHRIS: Reorder things in this function in the most logical and sensible way.
         # CHRIS: Verifies the username is in the group, and also not expired.
         csldap_res = isAlreadyStillMember(username,group_name)
         print(csldap_res)
         if form.is_valid():
 # REMOVE 'not' if 'not' csldap_res
-            if  csldap_res['isExpired'] and not renew_access:
+            if csldap_res['isExpired']:
                 messages.warning(request,f'{username} account may be expired. Please use Renew Access.')
 
-            elif csldap_res['isMember'] and not renew_access:
-                messages.error(request,f'User {username} is already a member of {system_name}.')
+            elif csldap_res['isMember'] and not update_user:
+            
+                if renew_access:
+                    messages.error(request,f'User {username} does not need to renew access.')
+                else:
+                    messages.error(request,f'User {username} is already a member of {system_name}.')
 
             elif not csldap_res['isValid']:
                 pass

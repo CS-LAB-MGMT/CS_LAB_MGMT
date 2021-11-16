@@ -24,6 +24,7 @@ from . import views
 urlpatterns = [
     path('', views.home, name='Request-Home'),
     path('help/', views.help, name='Request-Help'),
+    path('initdb/', views.initdb, name="DB-Init"),
 
 
 ]

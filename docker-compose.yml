@@ -6,6 +6,8 @@ services:
       - .:/app
     ports:
       - ${HOST_PORT}:${HOST_PORT}
+    env_file:
+      - ./.env
     image: ${APPNAME}:${IMAGENAME}
     container_name: ${CONTAINERNAMEDJ}
     command: python manage.py runserver 0.0.0.0:${HOST_PORT}
@@ -14,12 +16,12 @@ services:
   db:
     image: postgres
     ports:
-      - ${DB_PORT}:${DB_PORT}
+      - ${SQL_PORT}:${SQL_PORT}
     volumes:
       - ./data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=${SQL_DATABASE}
+      - POSTGRES_USER=${SQL_USER}
+      - POSTGRES_PASSWORD=${SQL_PASSWORD}
     container_name: ${CONTAINERNAMEDB}
-    command: -p ${DB_PORT}
+    command: -p ${SQL_PORT}

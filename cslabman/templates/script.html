@@ -1,0 +1,11 @@
+<!-- this inherits some base html from base.html, and then adds on unique html for this view -->
+{% extends "cslabman/base.html" %}
+{% block content %}
+
+<h1>Generated Script:</h1>
+
+<textarea rows=40 cols=80 description="Generated Script">{{ new_script }}</textarea>
+
+
+
+{% endblock content %}
