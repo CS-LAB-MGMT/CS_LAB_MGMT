@@ -1,7 +1,0 @@
-DB_PORT=15432
-HOST_PORT=18001
-IMAGENAME=chris_django
-CONTAINERNAMEDJ=chris_django
-CONTAINERNAMEDB=chris_postgres
-APPNAME=chris
-DJANGOSECRET=django-insecure-ek4a%3e#swkb-um#yj+h4t%zy6pzc4z%g2m=140j(nv+6x2qn%
