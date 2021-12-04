@@ -38,26 +38,12 @@ AUTHENTICATION_BACKENDS =[
     "django_auth_ldap.backend.LDAPBackend",
     "django.contrib.auth.backends.ModelBackend",
 ]
-AUTH_LDAP_SERVER_URI = "ldap://csd.mtsu.edu"
-# Can't tell if this is working because account may not have access?
-AUTH_LDAP_BIND_DN = "CN=Software Engineering - Lab Management Service Account,CN=Users,DC=csd,DC=mtsu,DC=edu" # What is the correct string here?
-AUTH_LDAP_BIND_PASSWORD = "SomeServicePassword1!"
-# AUTH_LDAP_BIND_DN = ""
-# AUTH_LDAP_BIND_PASSWORD = ""
+AUTH_LDAP_SERVER_URI = env('AUTH_LDAP_SERVER_URI')
+AUTH_LDAP_BIND_DN = env("AUTH_LDAP_BIND_DN")
+AUTH_LDAP_BIND_PASSWORD = env('AUTH_LDAP_BIND_PASSWORD')
 AUTH_LDAP_USER_SEARCH = LDAPSearch(
-    "ou=CS Users,dc=csd,dc=mtsu,dc=edu", ldap.SCOPE_SUBTREE, "(cn=%(user)s)" #Correct bind for %(user)s?
+    "ou=CS Users,dc=csd,dc=mtsu,dc=edu", ldap.SCOPE_SUBTREE, "(cn=%(user)s)"
 )
-# AUTH_LDAP_USER_ATTR_MAP = {
-#     "first_name": "givenName",
-#     "last_name": "sn",
-#     "email":"mail"
-# }
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework.authentication.SessionAuthentication',
-#     ),
-# }
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -108,11 +94,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
+        'ENGINE': env('DB_ENGINE'),
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWD'),
+        'HOST': env('DB_HOST'),
         'PORT': env('DB_PORT'),
     }
 }
@@ -170,11 +156,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # This makes the backgrounds of django.contrib.messages.error the color of danger.
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
-}
-
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "handlers": {"console": {"class": "logging.StreamHandler"}},
-    "loggers": {"django_auth_ldap": {"level": "DEBUG", "handlers": ["console"]}},
 }

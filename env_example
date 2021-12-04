@@ -1,0 +1,19 @@
+DB_PORT=15432
+HOST_PORT=18001
+
+IMAGENAME=chris_django
+CONTAINERNAMEDJ=chris_django
+CONTAINERNAMEDB=chris_postgres
+APPNAME=chris
+
+AUTH_LDAP_BIND_PASSWORD=fakepassword
+AUTH_LDAP_BIND_DN="CN=fakeaccountname,CN=someusers,DC=one,DC=middle,DC=com"
+AUTH_LDAP_SERVER_URI=ldap://some.place.com
+
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=postgres
+DB_PASSWD=postgres
+DB_USER=postgres
+DB_HOST=db
+
+DJANGOSECRET=put production key here!
