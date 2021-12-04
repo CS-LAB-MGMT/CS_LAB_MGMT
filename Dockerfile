@@ -4,5 +4,5 @@ WORKDIR /app
 COPY requirements.txt requirements.txt
 COPY .env .env
 RUN apt-get update \
-    && apt-get -y install libpq-dev gcc
+    && apt-get -y install libpq-dev gcc python-dev libldap2-dev libsasl2-dev libssl-dev
 RUN pip3 install -r requirements.txt

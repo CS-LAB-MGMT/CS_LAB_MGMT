@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import environ
 import os
-
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,9 +31,19 @@ SECRET_KEY = env.str('DJANGOSECRET')
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
-# Application definition
+# AUTHENTICATION section
+import ldap
+from django_auth_ldap.config import LDAPSearch
+AUTHENTICATION_BACKENDS =[
+    "django_auth_ldap.backend.LDAPBackend",
+    "django.contrib.auth.backends.ModelBackend",
+]
+AUTH_LDAP_SERVER_URI = env('AUTH_LDAP_SERVER_URI')
+AUTH_LDAP_BIND_DN = env("AUTH_LDAP_BIND_DN")
+AUTH_LDAP_BIND_PASSWORD = env('AUTH_LDAP_BIND_PASSWORD')
+AUTH_LDAP_USER_SEARCH = LDAPSearch(
+    "ou=CS Users,dc=csd,dc=mtsu,dc=edu", ldap.SCOPE_SUBTREE, "(cn=%(user)s)"
+)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -44,6 +54,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cslabman',
     'users',
+    'csldap',
+    'scriptgen',
 ]
 
 MIDDLEWARE = [
@@ -82,11 +94,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
+        'ENGINE': env('DB_ENGINE'),
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWD'),
+        'HOST': env('DB_HOST'),
         'PORT': env('DB_PORT'),
     }
 }
@@ -140,3 +152,8 @@ LOGIN_URL = 'login'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# This makes the backgrounds of django.contrib.messages.error the color of danger.
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
